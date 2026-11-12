@@ -10,8 +10,36 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    #auth-message { min-height: 1.2em; margin: 10px 0 0; text-align: center; font-size: 0.9rem; }
-    .guest-link { display: block; margin-top: 14px; text-align: center; color: #fff; opacity: 0.85; }
+    /* Card grows with its content and is centred on every screen size */
+    html, body { overflow-x: hidden; overflow-y: auto !important; margin: 0; }
+    body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px; box-sizing: border-box; }
+    .login-container {
+      width: min(460px, 100%) !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 40px 36px !important;
+      box-sizing: border-box;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.10) !important;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      position: relative;
+      z-index: 2;
+    }
+    .login-container h1 { color: #fff !important; margin-bottom: 24px !important; }
+    .login-container input { min-height: 46px; border-radius: 8px; box-sizing: border-box; }
+    .login-container button { min-height: 46px; border-radius: 8px; }
+    #submit, #create-acct-btn { color: #fff !important; }
+    .login-container p span { color: #fff; background: transparent !important; padding: 0 10px; }
+    #auth-message { min-height: 1.2em; margin: 12px 0 0; text-align: center; font-size: 15px; }
+    .guest-link { display: block; margin-top: 16px; text-align: center; color: #fff; }
+    .guest-link.primary {
+      margin-top: 18px; padding: 12px; border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.55); text-decoration: none; font-weight: 600;
+    }
+    .guest-link.primary:hover { background: rgba(255, 255, 255, 0.12); }
   </style>
  
     <link rel="stylesheet" href="responsive.css">
@@ -29,7 +57,7 @@
       <p><span>or</span></p>
       <button id = "sign-up">Sign Up</button>
     </div>
-
+ 
     <div id = "create-acct">
       <h1>Create an Account</h1>
       <input id = "email-signup" type = "text" placeholder = "Email *"></input>
@@ -40,7 +68,7 @@
       <button id = "return-btn">Return to Login</button>
     </div>
     <p id="auth-message" role="status"></p>
-    <a class="guest-link" href="main.html">Continue as guest &rarr;</a>
+    <a class="guest-link primary" href="main.html">Continue as guest &rarr;</a>
   </div>
   <div class="smedia">
     <ul class="ul2">
@@ -63,3 +91,4 @@
   <script type = "module" src = "./auth.js"></script>
 </body>
 </html>
+ 
