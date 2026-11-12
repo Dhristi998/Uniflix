@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="icon" href="icons/icon.png" type="image/x-icon">
+    <title>Profile - UniFlix</title>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <h1>Your Profile</h1>
+            <div class="profile-image">
+                <img src="icons/user.png" alt="Profile picture">
+            </div>
+        </div>
+        <div class="profile-details">
+            <h2><i class="fas fa-user"></i> <span id="name">Guest</span></h2>
+            <p><i class="fas fa-envelope"></i> Email: <span id="email">Not signed in</span></p>
+            <p><i class="fas fa-calendar-alt"></i> Joined: <span id="joined">-</span></p>
+        </div>
+        <div class="actions">
+            <button id="mood-btn"><i class="fas fa-face-smile"></i> Find a movie for my mood</button>
+            <button id="auth-btn"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <button id="home-btn"><i class="fas fa-film"></i> Back to movies</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+        import { firebaseConfig, isFirebaseConfigured } from "./js/firebase-config.js";
+
+        const authBtn = document.getElementById("auth-btn");
+        document.getElementById("mood-btn").onclick = () => location.href = "moodDetector.html";
+        document.getElementById("home-btn").onclick = () => location.href = "main.html";
+        authBtn.onclick = () => location.href = "signup.html";
+
+        if (isFirebaseConfigured) {
+            const auth = getAuth(initializeApp(firebaseConfig));
+            onAuthStateChanged(auth, (user) => {
+                if (!user) return;
+                document.getElementById("name").textContent = user.email.split("@")[0];
+                document.getElementById("email").textContent = user.email;
+                document.getElementById("joined").textContent =
+                    new Date(user.metadata.creationTime).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+                authBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Log out';
+                authBtn.onclick = () => signOut(auth).then(() => location.href = "UniFlix.html");
+            });
+        }
+    </script>
+</body>
+</html>

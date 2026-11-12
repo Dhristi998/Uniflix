@@ -1,0 +1,12 @@
+{
+  "name": "uniflix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mood-based movie recommendations from your facial expression, using face-api.js and the TMDB API.",
+  "scripts": {
+    "dev": "node dev-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

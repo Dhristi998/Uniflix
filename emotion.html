@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mood - UniFlix</title>
+    <link rel="icon" href="icons/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="emotion.css">
+    <style>
+        body { padding: 16px; align-items: center; }
+        #result { max-width: 760px; }
+        #pitch { text-align: center; opacity: 0.8; margin-bottom: 8px; }
+        #div { gap: 12px; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+    <h1 id="result"></h1>
+    <p id="pitch"></p>
+    <div id="div">
+        <button class="center-button" id="redirect-button">View Movies</button>
+        <button class="center-button" id="retry-button">Try Again</button>
+    </div>
+
+    <script type="module">
+        import { getMood, genreNames } from "./js/moods.js";
+
+        const emotion = new URLSearchParams(window.location.search).get('emotion');
+        const mood = getMood(emotion);
+
+        const result = document.getElementById('result');
+        const viewButton = document.getElementById('redirect-button');
+
+        if (mood) {
+            result.textContent = `You look like you're feeling ${mood.label}. I suggest: ${genreNames(mood)}.`;
+            document.getElementById('pitch').textContent = mood.pitch;
+            viewButton.addEventListener('click', () => {
+                window.location.href = `movielist.html?mood=${encodeURIComponent(emotion)}`;
+            });
+        } else {
+            result.textContent = "We couldn't read your mood. Let's try again.";
+            viewButton.style.display = 'none';
+        }
+
+        document.getElementById('retry-button').addEventListener('click', () => {
+            window.location.href = 'moodDetector.html';
+        });
+    </script>
+</body>
+</html>

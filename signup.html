@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - UniFlix</title>
+  <link rel = "stylesheet" href = "./sign.css">
+  <link rel="icon" href="icons/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    #auth-message { min-height: 1.2em; margin: 10px 0 0; text-align: center; font-size: 0.9rem; }
+    .guest-link { display: block; margin-top: 14px; text-align: center; color: #fff; opacity: 0.85; }
+  </style>
+ 
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    
+    <div class="blob" id="blob"></div>
+  <div class = "login-container">
+    <div id= "main">
+      <h1>Sign In</h1>
+      <input  id = "email" type = "text" placeholder = "Email"></input>
+      <input id = "password" type = "password" placeholder = "Password"></input>
+      <button id = "submit">Submit</button>
+      <a class="guest-link" href="forgot-password.html" style="margin-top:8px;font-size:0.85rem;">Forgot password?</a>
+      <p><span>or</span></p>
+      <button id = "sign-up">Sign Up</button>
+    </div>
+
+    <div id = "create-acct">
+      <h1>Create an Account</h1>
+      <input id = "email-signup" type = "text" placeholder = "Email *"></input>
+  <input id = "confirm-email-signup" type = "email" placeholder = "Confirm Email *"></input>
+      <input id = "password-signup" type = "password" placeholder = "Password *"></input>
+      <input id = "confirm-password-signup" type = "password" placeholder = "Confirm Password *"></input>
+      <button id = "create-acct-btn">Create Account</button>
+      <button id = "return-btn">Return to Login</button>
+    </div>
+    <p id="auth-message" role="status"></p>
+    <a class="guest-link" href="main.html">Continue as guest &rarr;</a>
+  </div>
+  <div class="smedia">
+    <ul class="ul2">
+                <li class="li2">
+                    <a class="a2" href="https://www.linkedin.com/in/dhristipalresha/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <span class="span2">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="li2">
+                    <a class="a2" href="https://github.com/Dhristi998" target="_blank" rel="noopener" aria-label="GitHub">
+                        <span class="span2">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+</div>
+  <script type = "module" src = "./auth.js"></script>
+</body>
+</html>
